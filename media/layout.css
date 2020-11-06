@@ -1,0 +1,15 @@
+
+/* Smartphone layout */
+@media(max-width: 768px){
+
+}
+
+/*Computer layout*/
+@media(min-width: 768px){
+/*
+    #dashboard{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }
+*/
+}
