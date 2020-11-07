@@ -73,10 +73,37 @@ class Block extends React.Component{
 }
 
 class VideoBlock extends Block{
+    constructor(props){
+        super(props);
+
+        this.toggleFullscreen = this.toggleFullscreen.bind(this);
+        this.fullscreen = false;
+    }
+
+    toggleFullscreen(){
+        this.fullscreen = (this.fullscreen) ? false : true;
+        let elem = this.target;
+        console.log(elem);
+/*
+        if (this.fullscreen) {
+            console.log('Go Fullscreen');
+
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+              } else if (elem.webkitRequestFullscreen) { 
+                elem.webkitRequestFullscreen();
+              } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+        } else {
+            console.log('Leave Fullscreen');
+            document.exitFullscreen();
+        }*/
+    }
+
     render(){
 
-      //  let url = `http://${this.props.ip}:${this.props.port}/stream_viewer?topic=/image_raw`;
-        let url = `http://${this.props.ip}:${this.props.port}`;
+        let url = `http://${this.props.ip}:${this.props.port}/stream_viewer?topic=/image_raw`;
+        //let url = `http://${this.props.ip}:${this.props.port}/image_row`;
 
 /*<div class="block video" id="video">
                 <span>video Server Address: </span>
@@ -97,7 +124,7 @@ class VideoBlock extends Block{
             <h2>Video</h2>
             <div>
                 <span>video Server Address: {this.props.ip}</span>
-                    <img id="video_flow" src={url}>
+                    <img id="video_flow" src={url} onClick={this.toggleFullscreen}>
                     </img>
             </div>
         </div>
@@ -124,7 +151,10 @@ class DashBoard extends React.Component{
 
     render(){
         return (<div><h4>Dashboard</h4>
-            <VideoBlock ip="localhost" port="12000"></VideoBlock>
+            <VideoBlock ip="localhost" port="8950"></VideoBlock>
+            <Block name="Emergency" id="emergency">
+                <button onClick={StopVehicle}>Stop vehicle</button>
+            </Block>
             <Block name="Block 1" id="block1">
                 <ReadOnlyField 
                     name="first_field" 
