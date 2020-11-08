@@ -150,7 +150,7 @@ class DashBoard extends React.Component{
     }
 
     render(){
-        return (<div><h4>Dashboard</h4>
+        return (<div><h4>Dashboard</h4><div className="content">
             <VideoBlock ip="localhost" port="8950"></VideoBlock>
             <Block name="Emergency" id="emergency">
                 <button onClick={StopVehicle}>Stop vehicle</button>
@@ -190,7 +190,7 @@ class DashBoard extends React.Component{
                 </ReadOnlyField>
             </Block>
 
-        </div>);
+            </div></div>);
     }
 }
 

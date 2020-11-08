@@ -1,15 +1,28 @@
 
 /* Smartphone layout */
 @media(max-width: 768px){
-
+    .block{
+        margin: 25px 5px;
+    }
+    
 }
 
 /*Computer layout*/
 @media(min-width: 768px){
-/*
-    #dashboard{
+
+    #dashboard .content{ 
         display: grid;
         grid-template-columns: repeat(3,1fr);
     }
-*/
+
+    #video{
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        height: 100%;
+    }
+
+    .block{
+        margin: 5px;
+    }
 }
