@@ -123,7 +123,7 @@ class VideoBlock extends Block{
         <div className="block video" id="video">
             <h2>Video</h2>
             <div>
-                <span>video Server Address: {this.props.ip}</span>
+                 <small>Server Address: {this.props.ip}</small>
                     <img id="video_flow" src={url} onClick={this.toggleFullscreen}>
                     </img>
             </div>
@@ -153,40 +153,41 @@ class DashBoard extends React.Component{
         return (<div><h4>Dashboard</h4><div className="content">
             <VideoBlock ip="localhost" port="8950"></VideoBlock>
             <Block name="Emergency" id="emergency">
-                <button onClick={StopVehicle}>Stop vehicle</button>
+                <button className="emergency" onClick={StopVehicle}>Stop vehicle</button>
+                <button>Make car ring</button>
             </Block>
-            <Block name="Block 1" id="block1">
+            <Block name="State" id="block1">
                 <ReadOnlyField 
                     name="first_field" 
                     type="boolean" 
                     value="true">
-                        First field to show
+                        Hotspot actived
                 </ReadOnlyField>
                 <ReadOnlyField 
                     name="second_field" 
                     type="boolean" 
                     value="false">
-                        Second field to show
+                        Defaillance state
                 </ReadOnlyField>
                 <ReadOnlyField 
                     name="value_field" 
                     type="value" 
                     value="17.25789">
-                        Value field to show
+                        Signal Strengh (dBm)
                 </ReadOnlyField>
             </Block>
-            <Block name="Block 2" id="block2">
+            <Block name="Velocity" id="block2">
             <ReadOnlyField 
-                    name="year" 
+                    name="rpm" 
                     type="value" 
                     value="2020">
-                        Year
+                        Speed (Rpm)
                 </ReadOnlyField>
                 <ReadOnlyField 
                     name="value_field" 
                     type="text" 
-                    value="Guttentag">
-                        Good morning in german
+                    value="working">
+                        Engine state
                 </ReadOnlyField>
             </Block>
 

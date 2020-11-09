@@ -1,5 +1,12 @@
+/* CSS variables */
+:root{
+    --font : "Lato", sans-serif
+}
+
+/* Common elements */
+
 body{
-    font-family: 'Lato', sans-serif;
+    font-family: var(--font), sans-serif;
     background-color: #f0f3ff;
 }
 
@@ -50,4 +57,32 @@ h1{
 }
 .boolean.field.false :last-child{
     color: rgb(158, 9, 29);
+}
+
+
+button{
+    padding: 5px 25px;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    border: solid 1px grey;
+    margin: 5px 3px;
+    font-family: var(--font)
+}
+
+button:hover{
+    box-shadow: none !important;
+}
+
+button:active:hover{
+    background-color: white !important;
+    color: black;
+    border-color: black;
+}
+button.emergency{
+    background-color: red;
+    color: white;
+    border-color:  darkred;
+    box-shadow: 0px 0px 10px -5px black;
 }
