@@ -154,7 +154,7 @@ class DashBoard extends React.Component{
             <VideoBlock ip="localhost" port="8950"></VideoBlock>
             <Block name="Emergency" id="emergency">
                 <button className="emergency" onClick={StopVehicle}>Stop vehicle</button>
-                <button onClick={/*  Entrez fonction ici */}>Fonction #2</button>
+                <button onClick={MoveForward}>Move Forward</button>
             </Block>
             <Block name="State" id="block1">
                 <ReadOnlyField 
