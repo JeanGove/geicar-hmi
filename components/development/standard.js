@@ -156,6 +156,12 @@ class DashBoard extends React.Component{
                 <button className="emergency" onClick={StopVehicle}>Stop vehicle</button>
                 <button onClick={MoveForward}>Move Forward</button>
             </Block>
+            <Block name="Controls" id="controls">
+                <button className="up" onClick={MoveForward}>up</button>
+                <button className="down" onClick={doNothing}>down</button>
+                <button className="left" onClick={doNothing}>left</button>
+                <button className="right" onClick={doNothing}>right</button>
+            </Block>
             <Block name="State" id="block1">
                 <ReadOnlyField 
                     name="first_field" 
@@ -195,9 +201,16 @@ class DashBoard extends React.Component{
     }
 }
 
-function Indicator(props){
-    let message = 'Hello World';
-    return (<p>{message}</p>);
+function doNothing(){
+    console.log("This function isn't developed or connected yet");
+}
+
+function ShowWarning(){
+
+}
+
+function ShowAlert(){
+    
 }
 
 //Show a Dashboard
