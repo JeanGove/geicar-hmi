@@ -1,5 +1,0 @@
-function StopVehicle(){
-    	  // Publishing a Topic
-	 
-    console.log("Stop the vehicle");
-}
