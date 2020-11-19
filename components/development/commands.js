@@ -49,18 +49,28 @@ function TurnRight(){
   } else {
     speedValue.angular.z -= 20;
   }
+
   SendMoveCommand();
 }
 
 function MoveForward(){
   console.log("Move the vehicle Forward");
-  speedValue.linear.x = 20;
+    if (speedValue.angular.z >= 60) {
+    speedValue.linear.x = 60;
+  } else {
+    speedValue.linear.x += 20;
+  }
+  
   SendMoveCommand();
 }
 
 function slowDown(){
   console.log("Slow Down");
-  speedValue.linear.x -= 20;
+  if (speedValue.angular.z <= 0) {
+    speedValue.linear.x = 0;
+  } else {
+    speedValue.linear.x -= 20;
+  }
   SendMoveCommand();
 }
 
