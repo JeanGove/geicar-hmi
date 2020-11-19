@@ -102,7 +102,7 @@ class VideoBlock extends Block{
 
     render(){
 
-        let url = `http://${this.props.ip}:${this.props.port}/stream_viewer?topic=/image_raw`;
+        let url = `http://${this.props.ip}:${this.props.port}/stream?topic=/raspicam_node/image&type=ros_compressed`;
         //let url = `http://${this.props.ip}:${this.props.port}/image_row`;
 
 /*<div class="block video" id="video">
@@ -151,10 +151,18 @@ class DashBoard extends React.Component{
 
     render(){
         return (<div><h4>Dashboard</h4><div className="content">
-            <VideoBlock ip="localhost" port="8950"></VideoBlock>
+            <VideoBlock ip="0.0.0.0" port="8080"></VideoBlock>
             <Block name="Emergency" id="emergency">
                 <button className="emergency" onClick={StopVehicle}>Stop vehicle</button>
                 <button onClick={MoveForward}>Move Forward</button>
+            </Block>
+            <Block name="Controls" id="controls">
+                <p></p>
+                <button className="up" onClick={MoveForward}>S</button>
+                <p></p>
+                <button className="left" onClick={doNothing}>R</button>
+                <button className="down" onClick={doNothing}>T</button>
+                <button className="right" onClick={doNothing}>Q</button>
             </Block>
             <Block name="State" id="block1">
                 <ReadOnlyField 
@@ -195,9 +203,16 @@ class DashBoard extends React.Component{
     }
 }
 
-function Indicator(props){
-    let message = 'Hello World';
-    return (<p>{message}</p>);
+function doNothing(){
+    console.log("This function isn't developed or connected yet");
+}
+
+function ShowWarning(){
+
+}
+
+function ShowAlert(){
+    
 }
 
 //Show a Dashboard

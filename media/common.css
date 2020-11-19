@@ -1,6 +1,12 @@
 /* CSS variables */
+@font-face {
+    font-family: "Arrow";
+    src: url(Arrows.otf);
+  }
+
 :root{
-    --font : "Lato", sans-serif
+    --font : "Lato", sans-serif;
+    --arrow-font: "Arrow", sans-serif;
 }
 
 /* Common elements */
@@ -107,4 +113,13 @@ button.emergency{
 
 footer{
     text-align: center;
+}
+#controls div{
+    display: grid;
+    grid-template-columns: repeat(3,1fr)
+}
+
+#controls button{
+    font-family: var(--arrow-font);
+    font-size: 3em;
 }
