@@ -160,9 +160,9 @@ class DashBoard extends React.Component{
                 <p></p>
                 <button className="up" onClick={MoveForward}>S</button>
                 <p></p>
-                <button className="left" onClick={doNothing}>R</button>
-                <button className="down" onClick={doNothing}>T</button>
-                <button className="right" onClick={doNothing}>Q</button>
+                <button className="left" onClick={TurnLeft}>R</button>
+                <button className="down" onClick={slowDown}>T</button>
+                <button className="right" onClick={TurnRight}>Q</button>
             </Block>
             <Block name="State" id="block1">
                 <ReadOnlyField 
