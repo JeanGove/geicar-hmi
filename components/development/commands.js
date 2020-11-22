@@ -74,6 +74,8 @@ function slowDown(){
   SendMoveCommand();
 }
 
+var inter = null;
+
 /** Handle the release key event
  * 
  * When released reinitialize the sensibility

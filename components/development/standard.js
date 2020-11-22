@@ -154,19 +154,25 @@ class DashBoard extends React.Component{
                 <button onClick={MoveForward}>Move Forward</button>
             </Block>
             <Block name="Controls" id="controls">
-                <p></p>
-                <button className="up" onClick={MoveForward}>S</button>
-                <p></p>
-                <button className="left" onClick={TurnLeft}>R</button>
-                <button className="down" onClick={slowDown}>T</button>
-                <button className="right" onClick={TurnRight}>Q</button>
+                <ReadOnlyField 
+                    name="speed_desired" 
+                    type="boolean" 
+                    value="Desired speed">
+                        <span id="speed_cmd">0 </span> RPM
+                </ReadOnlyField>
+                    <p></p>
+                    <button className="up" onClick={MoveForward}>S</button>
+                    <p></p>
+                    <button className="left" onClick={TurnLeft}>R</button>
+                    <button className="down" onClick={slowDown}>T</button>
+                    <button className="right" onClick={TurnRight}>Q</button>
             </Block>
             <Block name="State" id="block1">
                 <ReadOnlyField 
                     name="first_field" 
                     type="boolean" 
-                    value="true">
-                        Hotspot actived
+                    value="Battery voltage">
+                        <span id="bat_level"></span> V
                 </ReadOnlyField>
                 <ReadOnlyField 
                     name="second_field" 
@@ -185,8 +191,10 @@ class DashBoard extends React.Component{
             <ReadOnlyField 
                     name="rpm" 
                     type="value" 
-                    value={speedValue.linear.x}>
-                        Speed (Rpm)
+
+                    value="2020">
+                        Left wheel speed: <span id="speed_Lwheel"></span> RPM
+                        Right wheel speed: <span id="speed_Rwheel"></span> RPM
                 </ReadOnlyField>
                 <ReadOnlyField 
                     name="value_field" 
