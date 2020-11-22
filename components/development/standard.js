@@ -148,7 +148,7 @@ class DashBoard extends React.Component{
 
     render(){
         return (<div><h4>Dashboard</h4><div className="content">
-            <VideoBlock ip="0.0.0.0" port="8080"></VideoBlock>
+            <VideoBlock ip={LOCALHOST} port="8080"></VideoBlock>
             <Block name="Emergency" id="emergency">
                 <button className="emergency" onClick={StopVehicle}>Stop vehicle</button>
                 <button onClick={MoveForward}>Move Forward</button>

@@ -9,11 +9,14 @@
 	<script type="text/javascript" src="./script/roslib-min.js"></script>
 	
 	<script type="text/javascript" type="text/javascript">
+	  var LOCALHOST = "<?php echo $_SERVER['SERVER_NAME'];?>";
+
+
 	  // Connecting to ROS
 	  // -----------------
 
 	  var ros = new ROSLIB.Ros({
-	    url : 'ws://localhost:9090'
+	    url : 'ws://'+LOCALHOST+':9090'
 	  });
 
 	  ros.on('connection', function() {
