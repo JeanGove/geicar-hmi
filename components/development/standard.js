@@ -102,8 +102,8 @@ class VideoBlock extends Block{
 
     render(){
 
-        let url = `http://${this.props.ip}:${this.props.port}/stream?topic=/raspicam_node/image&type=ros_compressed`;
-
+        //let url = `http://${this.props.ip}:${this.props.port}/stream?topic=/raspicam_node/image&type=ros_compressed`;
+        let url = `http://${this.props.ip}/fond.png`;
         return (
         <div className="block video" id="video">
             <h2>Video</h2>
