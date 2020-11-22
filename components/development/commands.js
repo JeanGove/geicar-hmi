@@ -43,5 +43,9 @@ function MoveForward(){
     }
     });
     cmdVel.publish(twist);
-    console.log("Stop the vehicle");
+    console.log("Move the vehicle");
 }
+
+var inter = null;
+
+
