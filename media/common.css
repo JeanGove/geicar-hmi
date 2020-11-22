@@ -123,3 +123,7 @@ footer{
     font-family: var(--arrow-font);
     font-size: 3em;
 }
+
+#video_flow{
+    width: 100%
+}

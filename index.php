@@ -2,17 +2,21 @@
 <html>
 <head>
 	<title>HMI GEI-car</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
 	
 	<script type="text/javascript" src="./script/roslib.js"></script>
 	<script type="text/javascript" src="./script/roslib-min.js"></script>
 	
 	<script type="text/javascript" type="text/javascript">
+	  var LOCALHOST = "<?php echo $_SERVER['SERVER_NAME'];?>";
+
+
 	  // Connecting to ROS
 	  // -----------------
 
 	  var ros = new ROSLIB.Ros({
-	    url : 'ws://localhost:9090'
+	    url : 'ws://'+LOCALHOST+':9090'
 	  });
 
 	  ros.on('connection', function() {
@@ -49,7 +53,10 @@
 	    }
 	  });
 	  cmdVel.publish(twist);
+
 	</script>
+
+
 
 </head>
 
@@ -80,40 +87,5 @@
 	<!-- JavaScript source codes -->
 	<script type="text/babel" src="./components/development/standard.js"></script>
 	<script type="text/javascript" src="./components/development/commands.js"></script>
-	
 </body>
-  <script>
-    window.onload = function(){
-      // Suscribing a Topic
-      // ------------------
-      var listener = new ROSLIB.Topic({
-	ros : ros,
-	name : '/mot_sens',
-	messageType : 'std_msgs/Float32MultiArray'
-      });
-      
-      var Vol_mes = 0;
-      var Bat_mes = 0;
-      var VMG_mes = 0;
-      var VMD_mes = 0;
-
-      listener.subscribe(function(message) {
-	Vol_mes= message.data[0];
-	Bat_mes= message.data[1];
-	VMG_mes= message.data[2];
-	VMD_mes= message.data[3];
-	if(document.getElementById("speed_Lwheel") != null){
-	  document.getElementById("speed_Lwheel").innerHTML = VMG_mes;
-	}
-	if(document.getElementById("speed_Rwheel") != null){
-	  document.getElementById("speed_Rwheel").innerHTML = VMD_mes;
-	}
-	if(document.getElementById("bat_level") != null){
-	  document.getElementById("bat_level").innerHTML = Bat_mes.toFixed(2);
-	}
-      });
-	
-    };
-  </script>
-
 </html>
