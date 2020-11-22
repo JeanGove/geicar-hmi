@@ -124,6 +124,12 @@ footer{
     font-size: 3em;
 }
 
+#video div{
+    text-align: center;
+}
+
 #video_flow{
-    width: 100%
+    max-width: 100%;
+    cursor: zoom-in;
+    max-height: 50vh;
 }
