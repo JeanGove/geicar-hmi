@@ -74,7 +74,15 @@ function slowDown(){
   SendMoveCommand();
 }
 
-
+/** Handle the release key event
+ * 
+ * When released reinitialize the sensibility
+ */
+var ReleasedKey = {
+  "up": function(){
+    console.log("Released key: up");
+  }
+}
 
 /**
 * 

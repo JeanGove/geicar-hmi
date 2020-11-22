@@ -145,6 +145,18 @@ class DashBoard extends React.Component{
                 "video":{
                     "enabled":true,
                 }
+            },
+            "speedValue":{
+                linear : {
+                  x : 0.0,
+                  y : 0.0,
+                  z : 0.0
+                },
+                angular : {
+                  x : 0.0,
+                  y : 0.0,
+                  z : 0.0
+                }
             }
         }
     }
@@ -180,7 +192,7 @@ class DashBoard extends React.Component{
                 <ReadOnlyField 
                     name="value_field" 
                     type="value" 
-                    value="17.25789">
+                    value="-56.25789">
                         Signal Strengh (dBm)
                 </ReadOnlyField>
             </Block>
@@ -188,7 +200,7 @@ class DashBoard extends React.Component{
             <ReadOnlyField 
                     name="rpm" 
                     type="value" 
-                    value="2020">
+                    value={speedValue.linear.x}>
                         Speed (Rpm)
                 </ReadOnlyField>
                 <ReadOnlyField 
@@ -217,4 +229,5 @@ function ShowAlert(){
 
 //Show a Dashboard
 const domContainer = document.querySelector('#dashboard');
-ReactDOM.render( <DashBoard /> , domContainer);
+dashboard = <DashBoard />;
+ReactDOM.render( dashboard , domContainer);
