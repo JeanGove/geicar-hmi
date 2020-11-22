@@ -80,13 +80,12 @@ class VideoBlock extends Block{
         this.fullscreen = false;
     }
 
-    toggleFullscreen(){
+    toggleFullscreen(event){
         this.fullscreen = (this.fullscreen) ? false : true;
-        let elem = this.target;
-        console.log(elem);
-/*
+        let elem = event.target;
+
         if (this.fullscreen) {
-            console.log('Go Fullscreen');
+        	//console.log('Go Fullscreen');
 
             if (elem.requestFullscreen) {
                 elem.requestFullscreen();
@@ -94,37 +93,23 @@ class VideoBlock extends Block{
                 elem.webkitRequestFullscreen();
               } else if (elem.msRequestFullscreen) {
                 elem.msRequestFullscreen();
-        } else {
-            console.log('Leave Fullscreen');
+            }
+        }else{
+        	//console.log('Leave Fullscreen');
             document.exitFullscreen();
-        }*/
+        }
     }
 
     render(){
 
         let url = `http://${this.props.ip}:${this.props.port}/stream?topic=/raspicam_node/image&type=ros_compressed`;
-        //let url = `http://${this.props.ip}:${this.props.port}/image_row`;
-
-/*<div class="block video" id="video">
-                <span>video Server Address: </span>
-                <input required type="text" id="video_server_link_1" value="192.168.115.140:9090" title="<host>:<port>, default address is autodetected"/>
-                <span>image stream: </span><input id="image_stream_link_1"/>
-                <button id="start" style="background-color: green; color: white" onclick="start_video_1();">Call!</button>
-                <button  style="background-color: green; color: white" onclick="document.getElementById('img_1').src=document.getElementById('image_stream_link_1').value">startvideo</button>
-                <button  style="background-color: red; color: white" onclick="document.getElementById('img_1').src='' ">stopvideo</button>
-                
-                
-                <h1>/image_raw</h1>
-                <img id="img_1" src="http://192.168.115.140:8080/stream_viewer?topic=/image_raw">
-                </img>
-        </div>*/
-
+        //let url = `http://${this.props.ip}/fond.png`;
         return (
         <div className="block video" id="video">
             <h2>Video</h2>
             <div>
                  <small>Server Address: {this.props.ip}</small>
-                    <img id="video_flow" src={url} onClick={this.toggleFullscreen}>
+                    <img id="video_flow" src={url} title="Click to show in fullscreen" onClick={this.toggleFullscreen}>
                     </img>
             </div>
         </div>
@@ -145,13 +130,25 @@ class DashBoard extends React.Component{
                 "video":{
                     "enabled":true,
                 }
+            },
+            "speedValue":{
+                linear : {
+                  x : 0.0,
+                  y : 0.0,
+                  z : 0.0
+                },
+                angular : {
+                  x : 0.0,
+                  y : 0.0,
+                  z : 0.0
+                }
             }
         }
     }
 
     render(){
         return (<div><h4>Dashboard</h4><div className="content">
-            <VideoBlock ip="0.0.0.0" port="8080"></VideoBlock>
+            <VideoBlock ip={LOCALHOST} port="8080"></VideoBlock>
             <Block name="Emergency" id="emergency">
                 <button className="emergency" onClick={StopVehicle}>Stop vehicle</button>
                 <button onClick={MoveForward}>Move Forward</button>
@@ -180,7 +177,7 @@ class DashBoard extends React.Component{
                 <ReadOnlyField 
                     name="value_field" 
                     type="value" 
-                    value="17.25789">
+                    value="-56.25789">
                         Signal Strengh (dBm)
                 </ReadOnlyField>
             </Block>
@@ -188,7 +185,7 @@ class DashBoard extends React.Component{
             <ReadOnlyField 
                     name="rpm" 
                     type="value" 
-                    value="2020">
+                    value={speedValue.linear.x}>
                         Speed (Rpm)
                 </ReadOnlyField>
                 <ReadOnlyField 
@@ -217,4 +214,5 @@ function ShowAlert(){
 
 //Show a Dashboard
 const domContainer = document.querySelector('#dashboard');
-ReactDOM.render( <DashBoard /> , domContainer);
+dashboard = <DashBoard />;
+ReactDOM.render( dashboard , domContainer);
