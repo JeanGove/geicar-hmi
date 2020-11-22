@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>HMI GEI-car</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
 	
 	<script type="text/javascript" src="./script/roslib.js"></script>

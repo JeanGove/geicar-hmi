@@ -80,13 +80,12 @@ class VideoBlock extends Block{
         this.fullscreen = false;
     }
 
-    toggleFullscreen(){
+    toggleFullscreen(event){
         this.fullscreen = (this.fullscreen) ? false : true;
-        let elem = this.target;
-        console.log(elem);
-/*
+        let elem = event.target;
+
         if (this.fullscreen) {
-            console.log('Go Fullscreen');
+        	//console.log('Go Fullscreen');
 
             if (elem.requestFullscreen) {
                 elem.requestFullscreen();
@@ -94,37 +93,23 @@ class VideoBlock extends Block{
                 elem.webkitRequestFullscreen();
               } else if (elem.msRequestFullscreen) {
                 elem.msRequestFullscreen();
-        } else {
-            console.log('Leave Fullscreen');
+            }
+        }else{
+        	//console.log('Leave Fullscreen');
             document.exitFullscreen();
-        }*/
+        }
     }
 
     render(){
 
         let url = `http://${this.props.ip}:${this.props.port}/stream?topic=/raspicam_node/image&type=ros_compressed`;
-        //let url = `http://${this.props.ip}:${this.props.port}/image_row`;
-
-/*<div class="block video" id="video">
-                <span>video Server Address: </span>
-                <input required type="text" id="video_server_link_1" value="192.168.115.140:9090" title="<host>:<port>, default address is autodetected"/>
-                <span>image stream: </span><input id="image_stream_link_1"/>
-                <button id="start" style="background-color: green; color: white" onclick="start_video_1();">Call!</button>
-                <button  style="background-color: green; color: white" onclick="document.getElementById('img_1').src=document.getElementById('image_stream_link_1').value">startvideo</button>
-                <button  style="background-color: red; color: white" onclick="document.getElementById('img_1').src='' ">stopvideo</button>
-                
-                
-                <h1>/image_raw</h1>
-                <img id="img_1" src="http://192.168.115.140:8080/stream_viewer?topic=/image_raw">
-                </img>
-        </div>*/
 
         return (
         <div className="block video" id="video">
             <h2>Video</h2>
             <div>
                  <small>Server Address: {this.props.ip}</small>
-                    <img id="video_flow" src={url} onClick={this.toggleFullscreen}>
+                    <img id="video_flow" src={url} title="Click to show in fullscreen" onClick={this.toggleFullscreen}>
                     </img>
             </div>
         </div>
