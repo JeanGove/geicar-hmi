@@ -123,14 +123,7 @@ class DashBoard extends React.Component{
         
         //This Object will contain all the data
         this.state = {
-            "blocks":{
-                "test":{
-                    
-                },
-                "video":{
-                    "enabled":true,
-                }
-            },
+            "refreshed": 0,
             "speedValue":{
                 linear : {
                   x : 0.0,
@@ -144,11 +137,22 @@ class DashBoard extends React.Component{
                 }
             }
         }
+
+
+        //Launch the communication code
+        //Forced refreshment, to be improved !!!
+        window.setInterval(function(){
+            var state = this.state;
+            state.refreshed = (state.refreshed + 1) % 10;
+
+            //Updating
+            this.setState(state);
+        }.bind(this),500);
     }
 
     render(){
         return (<div><h4>Dashboard</h4><div className="content">
-            <VideoBlock ip={"0.0.0.0"} port="8080"></VideoBlock>
+            <VideoBlock ip={LOCALHOST} port="8080"></VideoBlock>
             <Block name="Emergency" id="emergency">
                 <button className="emergency" onClick={StopVehicle}>Stop vehicle</button>
                 <button onClick={MoveForward}>Move Forward</button>
@@ -156,11 +160,10 @@ class DashBoard extends React.Component{
             <Block name="Controls" id="controls">
                 <ReadOnlyField 
                     name="speed_desired" 
-                    type="boolean" 
-                    value="Desired speed">
-                        <span id="speed_cmd">0 </span> RPM
+                    type="value" 
+                    value={Vol_mes}>
+                        Speed
                 </ReadOnlyField>
-                    <p></p>
                     <button className="up" onClick={MoveForward}>S</button>
                     <p></p>
                     <button className="left" onClick={TurnLeft}>R</button>
@@ -170,9 +173,9 @@ class DashBoard extends React.Component{
             <Block name="State" id="block1">
                 <ReadOnlyField 
                     name="first_field" 
-                    type="boolean" 
-                    value="Battery voltage">
-                        <span id="bat_level"></span> V
+                    type="value" 
+                    value={Bat_mes}>
+                        Batterie level
                 </ReadOnlyField>
                 <ReadOnlyField 
                     name="second_field" 
@@ -188,19 +191,17 @@ class DashBoard extends React.Component{
                 </ReadOnlyField>
             </Block>
             <Block name="Velocity" id="block2">
-            <ReadOnlyField 
-                    name="rpm" 
+                <ReadOnlyField 
+                    name="first_field" 
                     type="value" 
-
-                    value="2020">
-                        Left wheel speed: <span id="speed_Lwheel"></span> RPM
-                        Right wheel speed: <span id="speed_Rwheel"></span> RPM
+                    value={VMG_mes}>
+                        Left wheel speed
                 </ReadOnlyField>
                 <ReadOnlyField 
-                    name="value_field" 
-                    type="text" 
-                    value="working">
-                        Engine state
+                    name="first_field" 
+                    type="value" 
+                    value={VMD_mes}>
+                        Right wheel speed
                 </ReadOnlyField>
             </Block>
 
@@ -223,3 +224,5 @@ function ShowAlert(){
 //Show a Dashboard
 const domContainer = document.querySelector('#dashboard');
 ReactDOM.render( <DashBoard /> , domContainer);
+
+

@@ -8,55 +8,55 @@
 	<script type="text/javascript" src="./script/roslib.js"></script>
 	<script type="text/javascript" src="./script/roslib-min.js"></script>
 	
+	<script type="text/javascript" src="./components/development/init.js"></script>
+	<!-- Initialisation -->
 	<script type="text/javascript" type="text/javascript">
-	  var LOCALHOST = "<?php echo $_SERVER['SERVER_NAME'];?>";
+		var LOCALHOST = "<?php echo $_SERVER['SERVER_NAME'];?>";
 
 
-	  // Connecting to ROS
-	  // -----------------
+		// Connecting to ROS
+		// -----------------
 
-	  var ros = new ROSLIB.Ros({
-	    url : 'ws://'+LOCALHOST+':9090'
-	  });
+		var ros = new ROSLIB.Ros({
+		url : 'ws://'+LOCALHOST+':9090'
+		});
 
-	  ros.on('connection', function() {
-	    console.log('Connected to websocket server.');
-	  });
+		ros.on('connection', function() {
+		console.log('Connected to websocket server.');
+		});
 
-	  ros.on('error', function(error) {
-	    console.log('Error connecting to websocket server: ', error);
-	  });
+		ros.on('error', function(error) {
+		console.log('Error connecting to websocket server: ', error);
+		});
 
-	  ros.on('close', function() {
-	    console.log('Connection to websocket server closed.');
-	  });
+		ros.on('close', function() {
+		console.log('Connection to websocket server closed.');
+		});
 
-	  // Publishing a Topic
-	  // ------------------
+		// Publishing a Topic
+		// ------------------
 
-	  var cmdVel = new ROSLIB.Topic({
-	    ros : ros,
-	    name : '/cmd_vel',
-	    messageType : 'geometry_msgs/Twist'
-	  });
+		var cmdVel = new ROSLIB.Topic({
+		ros : ros,
+		name : '/cmd_vel',
+		messageType : 'geometry_msgs/Twist'
+		});
 
-	  var twist = new ROSLIB.Message({
-	    linear : {
-	      x : 0.0,
-	      y : 0.0,
-	      z : 0.0
-	    },
-	    angular : {
-	      x : 0.0,
-	      y : 0.0,
-	      z : 0.0
-	    }
-	  });
-	  cmdVel.publish(twist);
+		var twist = new ROSLIB.Message({
+		linear : {
+			x : 0.0,
+			y : 0.0,
+			z : 0.0
+		},
+		angular : {
+			x : 0.0,
+			y : 0.0,
+			z : 0.0
+		}
+		});
+		cmdVel.publish(twist);
 
 	</script>
-
-
 
 </head>
 
@@ -87,5 +87,6 @@
 	<!-- JavaScript source codes -->
 	<script type="text/babel" src="./components/development/standard.js"></script>
 	<script type="text/javascript" src="./components/development/commands.js"></script>
+	<script type="text/javascript" src="./components/development/communication.js"></script>
 </body>
 </html>
