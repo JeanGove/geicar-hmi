@@ -34,20 +34,21 @@ function StopVehicle(){
 
 function TurnLeft(){
   console.log("Turn to the left");
-  if (speedValue.angular.z >= 20) {
-    speedValue.angular.z = 20;
+  if (speedValue.angular.z <= -30) {
+    speedValue.angular.z = -30;
   } else {
-    speedValue.angular.z += 20;
+    speedValue.angular.z -= 10;
   }
   SendMoveCommand();
+  console.log(speedValue.angular.z);
 }
 
 function TurnRight(){
   console.log("Turn to the right");
-  if (speedValue.angular.z <= -20) {
-    speedValue.angular.z = -20;
+  if (speedValue.angular.z >= 30) {
+    speedValue.angular.z = 30;
   } else {
-    speedValue.angular.z -= 20;
+    speedValue.angular.z += 10;
   }
 
   SendMoveCommand();
