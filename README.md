@@ -21,7 +21,7 @@ $ sudo apt install apache2 php libapache2-mod-php
 
 When installed go to the /var directory and change the owner of www
 $ cd /var/
-$ sudo chown -R <username> www
+$ sudo chown -R <"username"> www
 
 Then delete the html folder
 $ cd www
