@@ -16,7 +16,7 @@ var sensibility;
 function SendMoveCommand(){
   var cmdVel = new ROSLIB.Topic({
     ros : ros,
-    name : '/speed_cmd',
+    name : '/cmd_vel',
     messageType : 'geometry_msgs/Twist'
     });
 
