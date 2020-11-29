@@ -15,10 +15,10 @@ window.onload = function(){
 
 
     listener.subscribe(function(message) {
-        Vol_mes= message.data[0];
-        Bat_mes= message.data[1];
-        VMG_mes= message.data[2];
-        VMD_mes= message.data[3];
+        Vol_mes= message.data[0].toFixed(2);
+        Bat_mes= message.data[1].toFixed(2);
+        VMG_mes= message.data[2].toFixed(2);
+        VMD_mes= message.data[3].toFixed(2);
 
         /*
         if(document.getElementById("speed_Lwheel") != null){
