@@ -156,7 +156,7 @@ class DashBoard extends React.Component{
 
     render(){
         return (<div><h4>Dashboard</h4><div className="content">
-            <VideoBlock id="video" url={`http://0.0.0.0:${8080}/stream?topic=/raspicam_node/image&type=ros_compressed`}></VideoBlock>
+            <VideoBlock id="video" url={`http://${LOCALHOST}:${8080}/stream?topic=/raspicam_node/image&type=ros_compressed`}></VideoBlock>
             <Block name="Emergency" id="emergency">
                 <button className="emergency" onClick={StopVehicle}>Stop vehicle</button>
                 <button onClick={MoveForward}>Move Forward</button>
