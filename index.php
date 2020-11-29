@@ -11,7 +11,13 @@
 	<script type="text/javascript" src="./components/development/init.js"></script>
 	<!-- Initialisation -->
 	<script type="text/javascript" type="text/javascript">
-		var LOCALHOST = "<?php echo $_SERVER['SERVER_NAME'];?>";
+		var LOCALHOST = "<?php 
+			if( array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER) && !empty($_SERVER['HTTP_X_FORWARDED_FOR']) ) {
+				echo $_SERVER['HTTP_X_FORWARDED_FOR'];
+			}else{
+				echo $_SERVER['SERVER_NAME'];
+			}
+		?>";
 
 
 		// Connecting to ROS
@@ -62,6 +68,7 @@
 
 <body>
 	<h1>HMI</h1>
+	
 	<img class="bg-logo" src="./media/bg-logo.svg">
 	<img class="logo" src="./media/logo.png">
 	<div id="dashboard"></div>
@@ -84,8 +91,17 @@
 	<!-- Don't use this in production: -->
 	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
+
+	<!-- External librairies --->
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
 	<!-- JavaScript source codes -->
-	<script type="text/babel" src="./components/development/standard.js"></script>
+		<!-- Front-end functions -->
+			<!-- React components used in GUI.js -->
+	<script type="text/babel" src="./components/development/map.js"></script>
+			<!-- The main JS file generating all the interface blocks -->
+	<script type="text/babel" src="./components/development/GUI.js"></script>
+		<!-- Back-end functions -->
 	<script type="text/javascript" src="./components/development/commands.js"></script>
 	<script type="text/javascript" src="./components/development/communication.js"></script>
 </body>

@@ -5,6 +5,7 @@
 
 const e = React.createElement;
 
+
 //React elements
 //ReadOnlyField, this component will render each simple variables (value, boolean, etc...)
 class ReadOnlyField extends React.Component{
@@ -66,9 +67,13 @@ class Block extends React.Component{
        return (
             <div className="block" id={this.props.id}>
                 <h2>{this.props.name}</h2>
-                <div>{this.props.children}</div>
+                <div>{this.renderContent()}</div>
             </div>
         );
+    }
+    
+    renderContent(){
+        return this.props.children;
     }
 }
 
@@ -203,11 +208,21 @@ class DashBoard extends React.Component{
                         Right wheel speed
                 </ReadOnlyField>
             </Block>
-
+            <Block name="Trajectory" id="trajectory">
+                <GMap></GMap>
+            </Block>
             </div></div>);
     }
 }
 
+
+
+/*
+
+    <div id="map"></div>
+                <input onClick={doNothing} type="button" value="Remove line"></input>
+                <input onClick={doNothing} type="button" value="Add line"></input>
+*/
 function doNothing(){
     console.log("This function isn't developed or connected yet");
 }
